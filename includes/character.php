@@ -1,4 +1,6 @@
 <?php
+include_once "database.php";
+
 class Character
 {
     function __construct()

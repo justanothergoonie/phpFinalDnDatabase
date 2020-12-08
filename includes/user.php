@@ -106,8 +106,6 @@ class User
         }
     }
 
-
-
     function do_signup($vars)
     {
         try {
@@ -162,14 +160,5 @@ class User
         session_destroy();
         header('Location: login.php');
         die();
-    }
-    public function doSomething()
-    {
-        echo 'howdy, i am doing something';
-        echo $this->dsn;
-    }
-
-    private function doAnotherSomething()
-    {
     }
 }

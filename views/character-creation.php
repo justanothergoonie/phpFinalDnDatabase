@@ -1,17 +1,26 @@
 <?php
 session_start();
-include "head.php"
+
+include "../includes/character.php";
+
+$characterManager = new Character();
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($_REQUEST['_action'])) {
+    $characterManager->handleAction($_REQUEST['_action'], $_REQUEST);
+}
+
+include "head.php";
+
 ?>
 
 <form method="post">
     <input type="hidden" name="_action" value="create_character">
-    <?php echo $userManager->errorMessage(); ?>
+    <?php echo $characterManager->errorMessage(); ?>
     <label for="Name">Name</label>
 
     <input type="text" name="character_name">
 
     <label for="level">Level</label>
-    <select name="level" name="character_level">
+    <select name="character_level">
         <option value="1">1</option>
         <option value="2">2</option>
         <option value="3">3</option>

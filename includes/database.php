@@ -16,15 +16,4 @@ class Database
     {
         $this->dsn = "mysql:host={$this->db_host};dbname={$this->db_name};";
     }
-    public function errorMessage()
-    {
-        return $this->error;
-    }
-    function handleAction($action, $vars)
-    {
-        $action_function = "do_{$action}";
-        if (method_exists($this, $action_function)) {
-            $this->$action_function($vars);
-        }
-    }
 }

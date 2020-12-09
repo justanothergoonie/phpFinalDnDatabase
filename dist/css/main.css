@@ -144,4 +144,12 @@ table {
 	margin: 1% 0%;
 }
 
+.feats {
+	display: flex;
+}
+
+.skills {
+	display: flex;
+}
+
 /*# sourceMappingURL=main.css.map */

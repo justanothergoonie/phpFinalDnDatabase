@@ -14,6 +14,6 @@ class Database
 
     function __construct()
     {
-        $this->dsn = "mysql:host={$this->db_host};dbname={$this->db_name};";
+        $this->dsn = "mysql:host={$this->db_host};port=8889;dbname={$this->db_name};";
     }
 }

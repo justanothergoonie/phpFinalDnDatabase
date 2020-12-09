@@ -35,8 +35,8 @@ class User
         if (empty($user)) {
             $this->error = 'Invalid Credentials';
         } else {
-            $_SESSION['user'] = $user;
-            // print_r($user['username']);
+            $_SESSION['users'] = $user;
+            $_SESSION['user_id'] = $user['id'];
             $_SESSION['is_logged_in'] = true;
             header('Location: dn-dashboard.php');
             die();
@@ -134,6 +134,7 @@ class User
                     $add_stmt->bindParam(':username', $try_new_username);
                     $add_stmt->bindParam(':password', $try_new_password);
                     $result = $add_stmt->execute();
+
                     if ($result == 1) {
                         self::login($try_new_username, $try_new_password);
                     }

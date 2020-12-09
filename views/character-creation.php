@@ -9,14 +9,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($_REQUEST['_action'])) {
 }
 
 include "head.php";
-
+$races = $characterManager->get_races();
+$classes = $characterManager->get_classes();
+$feats = $characterManager->get_feats();
+$skills = $characterManager->get_skills();
+$stats = $characterManager->get_stats();
 ?>
-
+<?php echo $characterManager->errorMessage(); ?>
 <form method="post">
-    <input type="hidden" name="_action" value="create_character">
-    <?php echo $characterManager->errorMessage(); ?>
-    <label for="Name">Name</label>
 
+    <input type="hidden" name="_action" value="create_character">
+
+    <label for="Name">Name</label>
     <input type="text" name="character_name">
 
     <label for="level">Level</label>
@@ -44,68 +48,65 @@ include "head.php";
 
     <div class="stats">
         <h2>Stats</h2>
-
-        <label for="charisma">Charisma</label>
-        <input type="text" name="charisma">
-
-        <label for="dexterity">Dexterity</label>
-        <input type="text" name="dexterity">
-
-        <label for="wisdom">Wisdom</label>
-        <input type="text" name="wisdom">
-
-        <label for="intellegince">Intellegince</label>
-        <input type="text" name="intelligence">
-
-        <label for="constitution">Constitution</label>
-        <input type="text" name="constitution">
-
-        <label for="strength">Strength</label>
-        <input type="text" name="strength">
+        <?php foreach ($stats as $statsObj) :
+            $stat = $statsObj['stat_name'];
+            $stat_id = $statsObj['id']
+        ?>
+            <label for="<?php $stat ?>"> <?php echo $stat ?></label>
+            <input type="text" name="stat_id_<?php $stat_id ?>" required>
+        <?php endforeach; ?>
     </div>
 
-
-
-    <label for="Race">Race</label>
-    <select name="Race" id="">
-        <option value="1">1</option>
-        <option value="1">1</option>
-        <option value="1">1</option>
-        <option value="1">1</option>
-        <option value="1">1</option>
-        <option value="1">1</option>
-        <option value="1">1</option>
+    <label for="race">Race</label>
+    <select name="character_race" id="">
+        <?php foreach ($races as $raceObj) :
+            $race = $raceObj['race'];
+            $race_id = $raceObj['id']
+        ?>
+            <option value="<?php echo $race_id ?>"><?php echo $race ?></option>
+        <?php endforeach; ?>
     </select>
 
     <label for="Class">Class</label>
-    <select name="Class" id="">
-        <option value="1">1</option>
-        <option value="1">1</option>
-        <option value="1">1</option>
-        <option value="1">1</option>
-        <option value="1">1</option>
-        <option value="1">1</option>
-        <option value="1">1</option>
+    <select name="character_class" id="">
+        <?php foreach ($classes as $classObj) :
+            $class = $classObj['type'];
+            $class_id = $classObj['id']
+        ?>
+            <option value="<?php echo $class_id ?>"> <?php echo $class ?> </option>
+        <?php endforeach; ?>
+
     </select>
-    <label for="feats">Feats</label>
-    <select name="feats" id="">
-        <option value="1">1</option>
-        <option value="1">1</option>
-        <option value="1">1</option>
-        <option value="1">1</option>
-        <option value="1">1</option>
-        <option value="1">1</option>
-        <option value="1">1</option>
-    </select>
-    <label for="skills">Skills</label>
-    <select name="skills" id="">
-        <option value="1">1</option>
-        <option value="1">1</option>
-        <option value="1">1</option>
-        <option value="1">1</option>
-        <option value="1">1</option>
-        <option value="1">1</option>
-    </select>
+
+    <h2 for="feats"> Feats </h2>
+    <?php foreach ($feats as $featsObj) :
+        $feats = $featsObj['name'];
+        $feats_id = $featsObj['id'];
+        $feats_description =
+            $featsObj['description'];
+    ?>
+
+        <div class="feats">
+            <input name="character_feat[]" type="checkbox" value="<?php echo $feats_id ?>">
+            <label for="<?php echo $feats_id ?>"> <?php echo $feats ?></label>
+        </div>
+
+    <?php endforeach; ?>
+
+    <h2>Skills</h2>
+    <?php foreach ($skills as $skillsObj) :
+        $skills = $skillsObj['skill_name'];
+        $skills_id = $skillsObj['id'];
+        $skills_description =
+            $skillsObj['description'];
+    ?>
+        <div class="skills">
+            <input type="checkbox" value="<?php echo $skills_id ?>">
+            <label for="<?php echo $skills_id ?>"> <?php echo $skills ?> </label>
+        </div>
+
+    <?php endforeach; ?>
+
     <input type="submit" value="Create">
 </form>
 <?php

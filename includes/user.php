@@ -35,7 +35,7 @@ class User
         if (empty($user)) {
             $this->error = 'Invalid Credentials';
         } else {
-            $_SESSION['users'] = $user;
+            $_SESSION['user'] = $user;
             $_SESSION['user_id'] = $user['id'];
             $_SESSION['is_logged_in'] = true;
             header('Location: dn-dashboard.php');
@@ -161,5 +161,23 @@ class User
         session_destroy();
         header('Location: login.php');
         die();
+    }
+
+
+    public function get_characters()
+    {
+        try {
+            $sql_get_characters = 'SELECT * from player WHERE user_id = :user_id';
+            $get_characters_statement = $this->dbh->prepare($sql_get_characters);
+            $get_characters_statement->execute(['user_id' => $_SESSION['user_id']]);
+            $player = $get_characters_statement->fetchAll();
+            return $player;
+        } catch (PDOException $e) {
+            print_r('uh-oh!' . $e->getMessage() . '<br />');
+        }
+    }
+    public function test()
+    {
+        return 'test passed';
     }
 }

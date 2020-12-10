@@ -9,6 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($_REQUEST['_action'])) {
 }
 
 include "head.php";
+
 $races = $characterManager->get_races();
 $classes = $characterManager->get_classes();
 $feats = $characterManager->get_feats();
@@ -52,8 +53,8 @@ $stats = $characterManager->get_stats();
             $stat = $statsObj['stat_name'];
             $stat_id = $statsObj['id']
         ?>
-            <label for="<?php $stat ?>"> <?php echo $stat ?></label>
-            <input type="text" name="stat_id_<?php $stat_id ?>" required>
+        <label for="<?php $stat ?>"> <?php echo $stat ?></label>
+        <input type="text" name="stat_id_<?php echo $stat_id ?>" required>
         <?php endforeach; ?>
     </div>
 
@@ -63,7 +64,7 @@ $stats = $characterManager->get_stats();
             $race = $raceObj['race'];
             $race_id = $raceObj['id']
         ?>
-            <option value="<?php echo $race_id ?>"><?php echo $race ?></option>
+        <option value="<?php echo $race_id ?>"><?php echo $race ?></option>
         <?php endforeach; ?>
     </select>
 
@@ -73,7 +74,7 @@ $stats = $characterManager->get_stats();
             $class = $classObj['type'];
             $class_id = $classObj['id']
         ?>
-            <option value="<?php echo $class_id ?>"> <?php echo $class ?> </option>
+        <option value="<?php echo $class_id ?>"> <?php echo $class ?> </option>
         <?php endforeach; ?>
 
     </select>
@@ -86,10 +87,10 @@ $stats = $characterManager->get_stats();
             $featsObj['description'];
     ?>
 
-        <div class="feats">
-            <input name="character_feat[]" type="checkbox" value="<?php echo $feats_id ?>">
-            <label for="<?php echo $feats_id ?>"> <?php echo $feats ?></label>
-        </div>
+    <div class="feats">
+        <input name="character_feat[]" type="checkbox" value="<?php echo $feats_id ?>">
+        <label> <?php echo $feats ?></label>
+    </div>
 
     <?php endforeach; ?>
 
@@ -100,10 +101,10 @@ $stats = $characterManager->get_stats();
         $skills_description =
             $skillsObj['description'];
     ?>
-        <div class="skills">
-            <input type="checkbox" value="<?php echo $skills_id ?>">
-            <label for="<?php echo $skills_id ?>"> <?php echo $skills ?> </label>
-        </div>
+    <div class="skills">
+        <input name="character_skill[]" type="checkbox" value="<?php echo $skills_id ?>">
+        <label for="<?php echo $skills_id ?>"> <?php echo $skills ?> </label>
+    </div>
 
     <?php endforeach; ?>
 

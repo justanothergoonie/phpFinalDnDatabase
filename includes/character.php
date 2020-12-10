@@ -69,7 +69,8 @@ class Character
             $try_character_level = $vars['character_level'];
             $try_character_race = $vars['character_race'];
             $try_character_class = $vars['character_class'];
-            $try_character_feats = $vars['character_feat[]'];
+            $try_character_feats = $vars['character_feat'];
+            $try_character_skills = $vars['character_skills'];
 
             if (
                 !empty($try_character_name)
@@ -87,15 +88,26 @@ class Character
 
 
                 foreach ($try_character_feats as $selected_feat) {
-                    $sql_add_feats = 'INSERT INTO player_feats (player_id,feat_id) VALUES(:playerId, :featId)';
+                    $sql_add_feats = 'INSERT INTO player_feats (player_id,feat_id, feat_level) VALUES(:playerId, :featId, 1)';
                     $add_feat_statement = $this->dbh->prepare($sql_add_feats);
                     $add_feat_statement->bindParam(':featId', $selected_feat);
+                    $add_feat_statement->bindParam(':playerId', $player_id);
+                    $add_feat_statement->execute();
                 }
-                $add_feat_statement->bindParam(':playerId', $player_id);
+                foreach ($try_character_skills as $selected_skills) {
+                    $sql_add_skills = 'INSERT INTO player_skills (player_id, skill_id, skill_level) VALUES(:playerId, :skillId, 1)';
+                    $add_feat_statement = $this->dbh->prepare($sql_add_skills);
+                    $add_feat_statement->bindParam(':skillId', $selected_skills);
+                    $add_feat_statement->bindParam(':playerId', $player_id);
+                    $add_feat_statement->execute();
+                }
+
 
                 foreach ($vars as $var_key => $var_value) {
+                    print_r($var_key . "=" . $var_value);
                     if (strpos($var_key, "stat_id") !== false) {
                         $stat_id = substr($var_key, 8);
+                        print_r($stat_id);
                         $sql_add_player_stat = 'INSERT INTO player_stats (player_id, stat_id, stat_value) VALUES(:player_id, :stat_id, :stat_value)';
                         $add_player_stat_stmt = $this->dbh->prepare($sql_add_player_stat);
                         $add_player_stat_stmt->bindParam(':player_id', $player_id);

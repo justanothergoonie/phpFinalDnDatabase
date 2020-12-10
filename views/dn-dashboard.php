@@ -1,54 +1,29 @@
 <?php
-include 'head.php'
+include 'head.php';
+$characters = $userManager->get_characters();
 ?>
-
+<!--   
+    mark up to see characters 
+    sql select commands
+    mark up to edit character
+    sql update commands
+    markup to delete characters
+    sql delete commands
+-->
 <h1>Dashboard</h1>
-<ul>
-    <h2>Dungeon Master Games</h2>
-    <li>
-        <a href="">Campaign 1</a>
-    </li>
-    <li>
-        <a href="">Campaign 2</a>
-    </li>
-    <li>
-        <a href="">Campaign 3</a>
-    </li>
-    <li>
-        <a href="">Campaign 4</a>
-    </li>
-</ul>
 
 <ul>
-    <h2>Current Parties</h2>
-    <li>
-        <a href="">Party 1</a>
-    </li>
-    <li>
-        <a href="">Party 2</a>
-    </li>
-    <li>
-        <a href="">Party 3</a>
-    </li>
-    <li>
-        <a href="">Party 4</a>
-    </li>
-</ul>
+    <h2>Your Characters</h2>
+    <?php foreach ($characters as $i => $character) : ?>
+        <li><?php echo $i + 1; ?>. <a href="character-review.php"><?php echo $character['name']; ?></a></li>
 
+    <?php endforeach; ?>
+</ul>
 <br />
 <a href="character-creation.php">
     <h2>Create New Character</h2>
 </a>
 <br />
-
-<form method="post">
-    <h2>Start New Party</h2>
-
-    <label>Party Name</label>
-    <input type="text">
-
-    <input type="submit">
-</form>
 
 <?php
 include 'footer.php'

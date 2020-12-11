@@ -15,12 +15,14 @@ $characters = $userManager->get_characters();
 <ul>
     <h2>Your Characters</h2>
     <?php foreach ($characters as $i => $character) : ?>
-        <li><?php echo $i + 1; ?>. <a href="character-review.php"><?php echo $character['name']; ?></a></li>
+    <li><?php echo $i + 1; ?>. <a
+            href="character-review.php?id=<?php echo $character['id']; ?>?race_id=<?php echo $character['race_id']; ?>"><?php echo $character['name']; ?>/<?php echo $character['id']; ?></a>
+    </li>
 
     <?php endforeach; ?>
 </ul>
 <br />
-<a href="character-creation.php">
+<a href=" character-creation.php">
     <h2>Create New Character</h2>
 </a>
 <br />

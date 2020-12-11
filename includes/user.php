@@ -2,8 +2,8 @@
 include_once "database.php";
 
 class User
-
 {
+
     function __construct()
     {
         $db = new Database();
@@ -172,6 +172,32 @@ class User
             $get_characters_statement->execute(['user_id' => $_SESSION['user_id']]);
             $player = $get_characters_statement->fetchAll();
             return $player;
+        } catch (PDOException $e) {
+            print_r('uh-oh!' . $e->getMessage() . '<br />');
+        }
+    }
+    public function get_individual_base_character_info($player_id)
+    {
+        try {
+            $sql_check_individual_character = 'SELECT * from player WHERE id = :player_id AND user_id = :user_id';
+            $get_individual_character_statement = $this->dbh->prepare($sql_check_individual_character);
+            $get_individual_character_statement->execute(['player_id' => $player_id, 'user_id' => $_SESSION['user_id']]);
+            $individual_character = $get_individual_character_statement->fetch();
+            return $individual_character;
+        } catch (PDOException $e) {
+            print_r('uh-oh!' . $e->getMessage() . '<br />');
+        }
+    }
+
+    public function get_character_race($race_id)
+    {
+        try {
+            $sql_check_race = 'SELECT * from character_races WHERE id = :race_id';
+            $check_race_statement = $this->dbh->prepare($sql_check_race);
+            $check_race_statement->execute(['race_id' => $race_id]);
+            $character_race = $check_race_statement->fetch();
+            return $character_race;
+            print_r($character_race);
         } catch (PDOException $e) {
             print_r('uh-oh!' . $e->getMessage() . '<br />');
         }

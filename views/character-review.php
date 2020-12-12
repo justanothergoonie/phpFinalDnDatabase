@@ -23,10 +23,15 @@ $character_stats = $userManager->get_character_stats($_GET['id']);
         $stat_name = $stat['stat_name'];
         $stat_description = $stat['stat_description'];
         $stat_value = $stat['stat_value'] ?>
-    <li class="stat-list"><?php echo $stat_name ?> - <?php echo $stat_value ?> <br />
-        <img src="" alt=""><?php echo $stat_description ?>
-
+    <li class="stat-list">
+        <div></div><?php echo $stat_name ?> - <?php echo $stat_value ?>
+        <img src="../dist/img/info.png" alt="" class="info">
+        <div class="hide">
+            <?php echo $stat_description ?>
+        </div>
     </li>
+
+
     <?php endforeach ?>
 </ul>
 <h3>Skills</h3>

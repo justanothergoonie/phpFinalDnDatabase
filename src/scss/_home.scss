@@ -26,4 +26,14 @@
 }
 .stat-list {
 	margin-top: 10px;
+	.info {
+		width: 16px;
+	}
+	.info:hover + .hide {
+		display: block;
+		color: red;
+	}
+	.hide {
+		display: none;
+	}
 }

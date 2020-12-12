@@ -18,8 +18,8 @@ $is_logged_in = $_SESSION['is_logged_in'];
 
 <p>
     Actions:
-    <a href="?_action=edit">Edit Account</a> |
-    <a href="?_action=delete">Delete Account</a> |
+    <a href="edit-account.php">Edit Account</a> |
+    <a href="delete-account.php">Delete Account</a> |
     <a href="?_action=logout">Log out</a> |
     <a href="dn-dashboard.php">Dashboard</a>
 </p>

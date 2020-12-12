@@ -169,4 +169,17 @@ table {
 	margin-top: 10px;
 }
 
+.stat-list .info {
+	width: 16px;
+}
+
+.stat-list .info:hover + .hide {
+	display: block;
+	color: red;
+}
+
+.stat-list .hide {
+	display: none;
+}
+
 /*# sourceMappingURL=main.css.map */

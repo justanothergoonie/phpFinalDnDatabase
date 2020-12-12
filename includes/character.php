@@ -63,7 +63,7 @@ class Character
     }
     function do_create_character($vars)
     {
-        // print_r($vars);
+
         try {
             $try_character_name = $vars['character_name'];
             $try_character_level = $vars['character_level'];
@@ -95,7 +95,7 @@ class Character
                     $add_feat_statement->execute();
                 }
                 foreach ($try_character_skills as $selected_skills) {
-                    // print_r($selected_skills . "<br/>");
+
                     $sql_add_skills = 'INSERT INTO player_skills (player_id, skill_id, skill_level) VALUES(:playerId, :skillId, 1)';
                     $add_skill_statement = $this->dbh->prepare($sql_add_skills);
                     $add_skill_statement->bindParam(':skillId', $selected_skills);
@@ -106,10 +106,10 @@ class Character
 
 
                 foreach ($vars as $var_key => $var_value) {
-                    print_r($var_key . "=" . $var_value);
+
                     if (strpos($var_key, "stat_id") !== false) {
                         $stat_id = substr($var_key, 8);
-                        print_r($stat_id);
+
                         $sql_add_player_stat = 'INSERT INTO player_stats (player_id, stat_id, stat_value) VALUES(:player_id, :stat_id, :stat_value)';
                         $add_player_stat_stmt = $this->dbh->prepare($sql_add_player_stat);
                         $add_player_stat_stmt->bindParam(':player_id', $player_id);

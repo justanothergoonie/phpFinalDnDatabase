@@ -81,7 +81,7 @@ $stats = $characterManager->get_stats();
 
     <h2 for="feats"> Feats </h2>
     <?php foreach ($feats as $featsObj) :
-        $feats = $featsObj['name'];
+        $feats = $featsObj['feat_name'];
         $feats_id = $featsObj['id'];
         $feats_description =
             $featsObj['description'];
@@ -89,7 +89,7 @@ $stats = $characterManager->get_stats();
 
     <div class="feats">
         <input name="character_feat[]" type="checkbox" value="<?php echo $feats_id ?>">
-        <label> <?php echo $feats ?></label>
+        <label><?php echo $feats ?></label>
     </div>
 
     <?php endforeach; ?>

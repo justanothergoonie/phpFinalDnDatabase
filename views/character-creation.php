@@ -103,7 +103,7 @@ $stats = $characterManager->get_stats();
     ?>
     <div class="skills">
         <input name="character_skill[]" type="checkbox" value="<?php echo $skills_id ?>">
-        <label for="<?php echo $skills_id ?>"> <?php echo $skills ?> </label>
+        <label> <?php echo $skills ?> </label>
     </div>
 
     <?php endforeach; ?>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Dec 08, 2020 at 06:43 PM
+-- Generation Time: Dec 11, 2020 at 09:15 PM
 -- Server version: 5.7.26
 -- PHP Version: 7.4.2
 
@@ -95,7 +95,7 @@ INSERT INTO `character_races` (`id`, `race`, `charisma _bonus`, `dexterity_bonus
 
 CREATE TABLE `feats` (
   `id` int(11) NOT NULL,
-  `name` varchar(50) NOT NULL,
+  `feat_name` varchar(50) NOT NULL,
   `description` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -103,7 +103,7 @@ CREATE TABLE `feats` (
 -- Dumping data for table `feats`
 --
 
-INSERT INTO `feats` (`id`, `name`, `description`) VALUES
+INSERT INTO `feats` (`id`, `feat_name`, `description`) VALUES
 (1, 'Actor', '+1 in Cha., advantage on Deception and Performance checks, mimic the speech of a person or the sounds made by a creature.'),
 (2, 'Alert', '+5 to initiative, you can\'t be surprised, and creatures you don\'t see don\'t gain advantage on attack roll against you.'),
 (3, 'Athlete', '+1 in Str. or Dex., you stand up and climb more quickly, and you can jump with only a 5-ft run.\r\n'),
@@ -138,29 +138,99 @@ INSERT INTO `feats` (`id`, `name`, `description`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `party`
---
-
-CREATE TABLE `party` (
-  `id` int(11) NOT NULL,
-  `dm_id` int(11) NOT NULL,
-  `name` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `player`
 --
 
 CREATE TABLE `player` (
   `id` int(11) NOT NULL,
   `name` varchar(25) NOT NULL,
-  `class_id` int(11) NOT NULL,
-  `race_id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `party_id` int(11) NOT NULL
+  `class_id` int(11) DEFAULT NULL,
+  `race_id` int(11) DEFAULT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `level` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `player`
+--
+
+INSERT INTO `player` (`id`, `name`, `class_id`, `race_id`, `user_id`, `level`) VALUES
+(1, 's', NULL, NULL, NULL, 0),
+(2, 's', NULL, NULL, NULL, 0),
+(3, 's', NULL, NULL, NULL, 18),
+(4, 's', NULL, NULL, NULL, 18),
+(5, 's', NULL, NULL, NULL, 1),
+(6, 's', NULL, NULL, NULL, 1),
+(7, 's', NULL, NULL, NULL, 1),
+(8, 'james', NULL, NULL, NULL, 1),
+(9, 'ijm', NULL, NULL, NULL, 1),
+(10, 'c', NULL, NULL, NULL, 1),
+(11, 'n', NULL, NULL, NULL, 1),
+(12, 'r', NULL, NULL, NULL, 1),
+(13, 'f', NULL, NULL, NULL, 5),
+(14, 'v', NULL, 1, NULL, 1),
+(15, 's', NULL, 1, NULL, 1),
+(16, 'h', 3, 1, NULL, 1),
+(17, 's', 1, 1, NULL, 1),
+(18, 's', 1, 1, NULL, 1),
+(19, 's', 1, 1, NULL, 1),
+(20, 's', 1, 1, NULL, 1),
+(21, '1', 1, 1, 1, 1),
+(22, '1', 1, 1, 1, 1),
+(23, '1', 1, 1, 1, 1),
+(24, '1', 1, 1, 1, 1),
+(25, '1', 1, 1, 1, 1),
+(26, '1', 1, 1, 1, 1),
+(27, '1', 1, 1, 1, 1),
+(28, '1', 1, 1, 1, 1),
+(29, '1', 1, 1, 1, 1),
+(30, '1', 1, 1, 1, 1),
+(31, 'steve', 1, 1, 1, 1),
+(32, '1', 1, 1, 1, 1),
+(33, '1', 1, 1, 1, 1),
+(34, '1', 1, 1, 1, 1),
+(35, '1', 1, 1, 1, 1),
+(36, '1', 1, 1, 1, 1),
+(37, '1', 1, 1, 1, 1),
+(38, '1', 1, 1, 1, 1),
+(39, '1', 1, 1, 1, 1),
+(40, '2', 1, 1, 1, 1),
+(41, '1', 1, 1, 1, 1),
+(42, '1', 1, 1, 1, 1),
+(43, '1', 1, 1, 1, 1),
+(44, '1', 1, 1, 1, 1),
+(45, '1', 1, 1, 1, 1),
+(46, '1', 1, 1, 1, 1),
+(47, '1', 1, 1, 1, 1),
+(48, '1', 1, 1, 1, 1),
+(49, '1', 1, 1, 1, 1),
+(50, '1', 1, 1, 1, 1),
+(51, 's', 1, 1, 1, 1),
+(52, '1', 1, 1, 1, 1),
+(53, '1', 1, 1, 1, 1),
+(54, '1', 1, 1, 1, 1),
+(55, '1', 1, 1, 1, 1),
+(56, '1', 1, 1, 1, 1),
+(57, '2', 1, 1, 1, 1),
+(58, '2', 1, 1, 1, 1),
+(59, '1', 1, 1, 1, 1),
+(60, '1', 1, 1, 1, 1),
+(61, '1', 1, 1, 1, 1),
+(62, '1', 1, 1, 1, 1),
+(63, 'cody', 1, 1, 1, 1),
+(64, 'james', 1, 6, 1, 5),
+(65, 'chris', 5, 4, 1, 1),
+(66, 'dv', 1, 1, 1, 1),
+(67, 'dv', 1, 1, 1, 1),
+(68, '1', 1, 1, 1, 1),
+(69, '1', 1, 1, 1, 1),
+(70, '1', 1, 1, 1, 1),
+(71, '1', 1, 1, 1, 1),
+(72, '1', 1, 1, 1, 1),
+(73, '1', 1, 1, 1, 1),
+(74, '2', 1, 1, 1, 1),
+(75, '2', 1, 1, 1, 1),
+(76, 'Testing', 7, 6, 3, 6);
 
 -- --------------------------------------------------------
 
@@ -170,10 +240,52 @@ CREATE TABLE `player` (
 
 CREATE TABLE `player_feats` (
   `id` int(11) NOT NULL,
-  `level` int(11) NOT NULL,
+  `feat_level` int(11) NOT NULL,
   `feat_id` int(11) NOT NULL,
   `player_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `player_feats`
+--
+
+INSERT INTO `player_feats` (`id`, `feat_level`, `feat_id`, `player_id`) VALUES
+(1, 1, 4, 54),
+(2, 1, 5, 54),
+(3, 1, 7, 54),
+(4, 1, 31, 55),
+(5, 1, 31, 56),
+(6, 1, 2, 57),
+(7, 1, 3, 57),
+(8, 1, 2, 58),
+(9, 1, 3, 58),
+(10, 1, 1, 59),
+(11, 1, 6, 59),
+(12, 1, 1, 60),
+(13, 1, 6, 60),
+(14, 1, 1, 61),
+(15, 1, 6, 61),
+(16, 1, 3, 62),
+(17, 1, 3, 63),
+(18, 1, 24, 64),
+(19, 1, 25, 64),
+(20, 1, 3, 65),
+(21, 1, 5, 65),
+(22, 1, 6, 65),
+(23, 1, 5, 66),
+(24, 1, 7, 66),
+(25, 1, 5, 67),
+(26, 1, 7, 67),
+(27, 1, 1, 68),
+(28, 1, 1, 69),
+(29, 1, 1, 70),
+(30, 1, 1, 71),
+(31, 1, 1, 72),
+(32, 1, 1, 73),
+(33, 1, 1, 74),
+(34, 1, 1, 75),
+(35, 1, 9, 76),
+(36, 1, 13, 76);
 
 -- --------------------------------------------------------
 
@@ -184,9 +296,19 @@ CREATE TABLE `player_feats` (
 CREATE TABLE `player_skills` (
   `id` int(11) NOT NULL,
   `player_id` int(11) NOT NULL,
-  `skill_id` int(11) NOT NULL,
-  `level` int(11) NOT NULL
+  `skill_id` int(11) DEFAULT NULL,
+  `skill_level` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `player_skills`
+--
+
+INSERT INTO `player_skills` (`id`, `player_id`, `skill_id`, `skill_level`) VALUES
+(1, 75, 3, 1),
+(2, 75, 4, 1),
+(3, 76, 3, 1),
+(4, 76, 10, 1);
 
 -- --------------------------------------------------------
 
@@ -197,22 +319,109 @@ CREATE TABLE `player_skills` (
 CREATE TABLE `player_stats` (
   `id` int(11) NOT NULL,
   `player_id` int(11) NOT NULL,
-  `stat_id` int(11) NOT NULL,
-  `stat_number` int(11) NOT NULL,
-  `level` int(11) NOT NULL
+  `stat_id` int(11) DEFAULT NULL,
+  `stat_value` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- --------------------------------------------------------
-
 --
--- Table structure for table `roles`
+-- Dumping data for table `player_stats`
 --
 
-CREATE TABLE `roles` (
-  `id` int(11) NOT NULL,
-  `game_master` varchar(24) NOT NULL,
-  `player_character` varchar(24) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+INSERT INTO `player_stats` (`id`, `player_id`, `stat_id`, `stat_value`) VALUES
+(1, 4, NULL, NULL),
+(2, 5, NULL, NULL),
+(3, 6, NULL, NULL),
+(4, 7, NULL, NULL),
+(5, 62, 1, 1),
+(6, 62, 2, 1),
+(7, 62, 3, 1),
+(8, 62, 4, 1),
+(9, 62, 5, 1),
+(10, 62, 6, 1),
+(11, 63, 1, 1),
+(12, 63, 2, 1),
+(13, 63, 3, 1),
+(14, 63, 4, 1),
+(15, 63, 5, 1),
+(16, 63, 6, 1),
+(17, 64, 1, 1),
+(18, 64, 2, 1),
+(19, 64, 3, 1),
+(20, 64, 4, 1),
+(21, 64, 5, 1),
+(22, 64, 6, 1),
+(23, 65, 1, 1),
+(24, 65, 2, 1),
+(25, 65, 3, 1),
+(26, 65, 4, 1),
+(27, 65, 5, 1),
+(28, 65, 6, 1),
+(29, 66, 1, 1),
+(30, 66, 2, 1),
+(31, 66, 3, 1),
+(32, 66, 4, 1),
+(33, 66, 5, 1),
+(34, 66, 6, 1),
+(35, 67, 1, 1),
+(36, 67, 2, 1),
+(37, 67, 3, 1),
+(38, 67, 4, 1),
+(39, 67, 5, 1),
+(40, 67, 6, 1),
+(41, 68, 1, 1),
+(42, 68, 2, 1),
+(43, 68, 3, 1),
+(44, 68, 4, 1),
+(45, 68, 5, 1),
+(46, 68, 6, 1),
+(47, 69, 1, 1),
+(48, 69, 2, 1),
+(49, 69, 3, 1),
+(50, 69, 4, 1),
+(51, 69, 5, 1),
+(52, 69, 6, 1),
+(53, 70, 1, 1),
+(54, 70, 2, 1),
+(55, 70, 3, 1),
+(56, 70, 4, 1),
+(57, 70, 5, 1),
+(58, 70, 6, 1),
+(59, 71, 1, 1),
+(60, 71, 2, 1),
+(61, 71, 3, 1),
+(62, 71, 4, 1),
+(63, 71, 5, 1),
+(64, 71, 6, 1),
+(65, 72, 1, 1),
+(66, 72, 2, 1),
+(67, 72, 3, 1),
+(68, 72, 4, 1),
+(69, 72, 5, 1),
+(70, 72, 6, 1),
+(71, 73, 1, 1),
+(72, 73, 2, 1),
+(73, 73, 3, 1),
+(74, 73, 4, 1),
+(75, 73, 5, 1),
+(76, 73, 6, 1),
+(77, 74, 1, 2),
+(78, 74, 2, 2),
+(79, 74, 3, 2),
+(80, 74, 4, 2),
+(81, 74, 5, 2),
+(82, 74, 6, 2),
+(83, 75, 1, 2),
+(84, 75, 2, 2),
+(85, 75, 3, 2),
+(86, 75, 4, 2),
+(87, 75, 5, 2),
+(88, 75, 6, 2),
+(89, 76, 1, 17),
+(90, 76, 2, 14),
+(91, 76, 3, 15),
+(92, 76, 4, 17),
+(93, 76, 5, 20),
+(94, 76, 6, 20);
 
 -- --------------------------------------------------------
 
@@ -263,6 +472,18 @@ CREATE TABLE `stats` (
   `stat_discription` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `stats`
+--
+
+INSERT INTO `stats` (`id`, `stat_name`, `stat_discription`) VALUES
+(1, 'strength', 'A Strength check can model any attempt to lift, push, pull, or break something, to force your body through a space, or to otherwise apply brute force to a situation. The Athletics skill reflects aptitude in certain kinds of Strength checks.'),
+(2, 'dexterity', 'A Dexterity check can model any attempt to move nimbly, quickly, or quietly, or to keep from falling on tricky footing. The Acrobatics, Sleight of Hand, and Stealth skills reflect aptitude in certain kinds of Dexterity checks.'),
+(3, 'constitution', 'Constitution checks are uncommon, and no skills apply to Constitution checks, because the endurance this ability represents is largely passive rather than involving a specific effort on the part of a character or monster. A Constitution check can model your attempt to push beyond normal limits, however.'),
+(4, 'wisdom', 'A Wisdom check might reflect an effort to read body language, understand someone’s feelings, notice things about the environment, or care for an injured person. The Animal Handling, Insight, Medicine, Perception, and Survival skills reflect aptitude in certain kinds of Wisdom checks.'),
+(5, 'intelligence', 'An Intelligence check comes into play when you need to draw on logic, education, memory, or deductive reasoning. The Arcana, History, Investigation, Nature, and Religion skills reflect aptitude in certain kinds of Intelligence checks.'),
+(6, 'charisma', 'A Charisma check might arise when you try to influence or entertain others, when you try to make an impression or tell a convincing lie, or when you are navigating a tricky social situation. The Deception, Intimidation, Performance, and Persuasion skills reflect aptitude in certain kinds of Charisma checks.');
+
 -- --------------------------------------------------------
 
 --
@@ -281,7 +502,8 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `username`, `password`) VALUES
 (1, '1', '1'),
-(2, '2', '2');
+(2, '2', '2'),
+(3, 'Testing', 'Teasting');
 
 --
 -- Indexes for dumped tables
@@ -312,12 +534,6 @@ ALTER TABLE `feats`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `party`
---
-ALTER TABLE `party`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `player`
 --
 ALTER TABLE `player`
@@ -339,12 +555,6 @@ ALTER TABLE `player_skills`
 -- Indexes for table `player_stats`
 --
 ALTER TABLE `player_stats`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `roles`
---
-ALTER TABLE `roles`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -394,40 +604,28 @@ ALTER TABLE `feats`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
--- AUTO_INCREMENT for table `party`
---
-ALTER TABLE `party`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT for table `player`
 --
 ALTER TABLE `player`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
 
 --
 -- AUTO_INCREMENT for table `player_feats`
 --
 ALTER TABLE `player_feats`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT for table `player_skills`
 --
 ALTER TABLE `player_skills`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `player_stats`
 --
 ALTER TABLE `player_stats`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `roles`
---
-ALTER TABLE `roles`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=95;
 
 --
 -- AUTO_INCREMENT for table `skills`
@@ -439,10 +637,11 @@ ALTER TABLE `skills`
 -- AUTO_INCREMENT for table `stats`
 --
 ALTER TABLE `stats`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+

@@ -144,12 +144,29 @@ table {
 	margin: 1% 0%;
 }
 
+.base-info {
+	display: flex;
+	flex-direction: column;
+}
+
 .feats {
 	display: flex;
 }
 
 .skills {
 	display: flex;
+}
+
+.skill-list {
+	margin-top: 10px;
+}
+
+.feat-list {
+	margin-top: 10px;
+}
+
+.stat-list {
+	margin-top: 10px;
 }
 
 /*# sourceMappingURL=main.css.map */

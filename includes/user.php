@@ -179,25 +179,70 @@ class User
     public function get_individual_base_character_info($player_id)
     {
         try {
-            $sql_check_individual_character = 'SELECT * from player WHERE id = :player_id AND user_id = :user_id';
+
+            $sql_check_individual_character
+                = 'SELECT * from player 
+                JOIN character_races ON player.race_id = character_races.id  
+                JOIN character_class ON player.class_id = character_class.id
+                JOIN player_stats ON player.id = player_stats.player_id
+                WHERE player.id = :player_id AND user_id = :user_id';
             $get_individual_character_statement = $this->dbh->prepare($sql_check_individual_character);
             $get_individual_character_statement->execute(['player_id' => $player_id, 'user_id' => $_SESSION['user_id']]);
             $individual_character = $get_individual_character_statement->fetch();
+
             return $individual_character;
         } catch (PDOException $e) {
             print_r('uh-oh!' . $e->getMessage() . '<br />');
         }
     }
 
-    public function get_character_race($race_id)
+    public function get_character_skills($player_id)
     {
         try {
-            $sql_check_race = 'SELECT * from character_races WHERE id = :race_id';
-            $check_race_statement = $this->dbh->prepare($sql_check_race);
-            $check_race_statement->execute(['race_id' => $race_id]);
-            $character_race = $check_race_statement->fetch();
-            return $character_race;
-            print_r($character_race);
+            $sql_check_character_skills
+                = 'SELECT  s.* FROM player p 
+                LEFT OUTER JOIN player_skills ps on p.id = ps.player_id
+                LEFT OUTER JOIN skills s on ps.skill_id = s.id
+                WHERE p.id = :player_id AND p.user_id = :user_id';
+            $get_character_skills_statement = $this->dbh->prepare($sql_check_character_skills);
+            $get_character_skills_statement->execute(['player_id' => $player_id, 'user_id' => $_SESSION['user_id']]);
+            $character_skills = $get_character_skills_statement->fetchAll();
+
+            return $character_skills;
+        } catch (PDOException $e) {
+            print_r('uh-oh!' . $e->getMessage() . '<br />');
+        }
+    }
+    public function get_character_feats($player_id)
+    {
+        try {
+            $sql_check_character_feats
+                = 'SELECT  f.* FROM player p 
+                LEFT OUTER JOIN player_feats pf on p.id = pf.player_id
+                LEFT OUTER JOIN feats f on pf.feat_id = f.id
+                WHERE p.id = :player_id AND p.user_id = :user_id';
+            $get_character_feats_statement = $this->dbh->prepare($sql_check_character_feats);
+            $get_character_feats_statement->execute(['player_id' => $player_id, 'user_id' => $_SESSION['user_id']]);
+            $character_feats = $get_character_feats_statement->fetchAll();
+
+            return $character_feats;
+        } catch (PDOException $e) {
+            print_r('uh-oh!' . $e->getMessage() . '<br />');
+        }
+    }
+    public function get_character_stats($player_id)
+    {
+        try {
+            $sql_check_character_stats
+                = 'SELECT  s.*, ps.* FROM player p 
+                LEFT OUTER JOIN player_stats ps on p.id = ps.player_id
+                LEFT OUTER JOIN stats s on ps.stat_id = s.id
+                WHERE p.id = :player_id AND p.user_id = :user_id';
+            $get_character_stats_statement = $this->dbh->prepare($sql_check_character_stats);
+            $get_character_stats_statement->execute(['player_id' => $player_id, 'user_id' => $_SESSION['user_id']]);
+            $character_stats = $get_character_stats_statement->fetchAll();
+
+            return $character_stats;
         } catch (PDOException $e) {
             print_r('uh-oh!' . $e->getMessage() . '<br />');
         }

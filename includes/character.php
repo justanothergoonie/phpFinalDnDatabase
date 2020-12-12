@@ -70,7 +70,7 @@ class Character
             $try_character_race = $vars['character_race'];
             $try_character_class = $vars['character_class'];
             $try_character_feats = $vars['character_feat'];
-            $try_character_skills = $vars['character_skills'];
+            $try_character_skills = $vars['character_skill'];
 
             if (
                 !empty($try_character_name)
@@ -95,12 +95,14 @@ class Character
                     $add_feat_statement->execute();
                 }
                 foreach ($try_character_skills as $selected_skills) {
+                    // print_r($selected_skills . "<br/>");
                     $sql_add_skills = 'INSERT INTO player_skills (player_id, skill_id, skill_level) VALUES(:playerId, :skillId, 1)';
-                    $add_feat_statement = $this->dbh->prepare($sql_add_skills);
-                    $add_feat_statement->bindParam(':skillId', $selected_skills);
-                    $add_feat_statement->bindParam(':playerId', $player_id);
-                    $add_feat_statement->execute();
+                    $add_skill_statement = $this->dbh->prepare($sql_add_skills);
+                    $add_skill_statement->bindParam(':skillId', $selected_skills);
+                    $add_skill_statement->bindParam(':playerId', $player_id);
+                    $add_skill_statement->execute();
                 }
+
 
 
                 foreach ($vars as $var_key => $var_value) {

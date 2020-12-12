@@ -16,7 +16,7 @@ $characters = $userManager->get_characters();
     <h2>Your Characters</h2>
     <?php foreach ($characters as $i => $character) : ?>
     <li><?php echo $i + 1; ?>. <a
-            href="character-review.php?id=<?php echo $character['id']; ?>?race_id=<?php echo $character['race_id']; ?>"><?php echo $character['name']; ?>/<?php echo $character['id']; ?></a>
+            href="character-review.php?id=<?php echo $character['id']; ?>"><?php echo $character['name']; ?>/<?php echo $character['id']; ?></a>
     </li>
 
     <?php endforeach; ?>

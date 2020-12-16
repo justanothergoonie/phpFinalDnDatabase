@@ -10,22 +10,23 @@ $characters = $userManager->get_characters();
     markup to delete characters
     sql delete commands
 -->
-<h1>Dashboard</h1>
+<div class="character_container">
 
-<ul>
-    <h2>Your Characters</h2>
-    <?php foreach ($characters as $i => $character) : ?>
-    <li><?php echo $i + 1; ?>. <a
-            href="character-review.php?id=<?php echo $character['id']; ?>"><?php echo $character['name']; ?>/<?php echo $character['id']; ?></a>
-    </li>
 
-    <?php endforeach; ?>
-</ul>
-<br />
-<a href=" character-creation.php">
-    <h2>Create New Character</h2>
-</a>
-<br />
+    <ul>
+        <h1>Your Characters</h1>
+        <?php foreach ($characters as $i => $character) : ?>
+        <li><?php echo $i + 1; ?>.
+            <a href="character-review.php?id=<?php echo $character['id']; ?>"><?php echo $character['name']; ?></a>
+        </li>
+        <?php endforeach; ?>
+    </ul>
+
+    <a href="character-creation.php">
+        <h2>Create New Character</h2>
+    </a>
+</div>
+
 
 <?php
 include 'footer.php'

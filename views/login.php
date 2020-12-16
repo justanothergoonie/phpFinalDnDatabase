@@ -20,10 +20,10 @@ include 'head.php';
 
 
 <?php if ($is_logged_in) : ?>
-    <em style="color: red;"><?php echo $userManager->errorMessage(); ?></em>
-    <h1>Welcome, <?php echo $user['username']; ?>!</h1>
+<em style="color: red;"><?php echo $userManager->errorMessage(); ?></em>
+<h1>Welcome, <?php echo $user['username']; ?>!</h1>
 
-    <?php switch ($_GET['_action']) {
+<?php switch ($_GET['_action']) {
         case 'edit':
             //show edit code
             include 'edit_account.php';
@@ -35,43 +35,51 @@ include 'head.php';
     ?>
 <?php else : ?>
 
-    <em style="color: red;"><?php echo $userManager->errorMessage(); ?></em>
+<em style="color: red;"><?php echo $userManager->errorMessage(); ?></em>
 
-    <form method="post">
+<div class="form-field">
+    <form method="post" class="existing_users">
         <input type="hidden" name="_action" value="login">
         <h2>Existing Users</h2>
-        <label>Username</label>
-        <input type="text" name="username" />
-        <br />
 
-        <label>Password</label>
-        <input type="password" name="password" />
-        <br />
-        <input type="submit" value="Login" />
+        <div class="field">
+            <label>Username</label>
+            <input type="text" name="username" />
+        </div>
+
+
+        <div class="field">
+            <label>Password</label>
+            <input type="password" name="password" />
+        </div>
+
+        <input type="submit" value="Login" class="submit" />
     </form>
 
 
 
-    <form method="post">
+    <form method="post" class="create_account">
         <input type="hidden" name="_action" value="signup">
         <h2>Create an Account</h2>
+        <div class="field">
+            <label>Create Username</label>
+            <input type="text" name="username">
+        </div>
 
+        <div class="field">
+            <label>Password</label>
+            <input type="password" name="password">
+        </div>
 
-        <label>Create Username</label>
-        <input type="text" name="username">
-        <br />
+        <div class="field">
+            <label>Confirm Password</label>
+            <input type="password" name="confirm_password">
+        </div>
 
-        <label>Password</label>
-        <input type="password" name="password">
-        <br />
-
-        <label>Confirm Password</label>
-        <input type="password" name="confirm_password">
-
-        <br />
-
-        <input type="submit" value="Create">
+        <input type="submit" value="Create" class="submit">
     </form>
+</div>
+
 <?php endif; ?>
 
 <?php include 'footer.php'; ?>

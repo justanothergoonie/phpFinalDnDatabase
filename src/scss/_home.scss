@@ -1,3 +1,7 @@
+body {
+	display: flex;
+	flex-direction: column;
+}
 .stats {
 	display: flex;
 	flex-direction: column;
@@ -7,33 +11,294 @@
 		margin: 1% 0%;
 	}
 }
-
-.base-info {
+h1 {
+	font-size: 2rem;
+}
+h2 {
+	font-size: 1.5rem;
 	display: flex;
 	flex-direction: column;
 }
-.feats {
-	display: flex;
-}
-.skills {
-	display: flex;
-}
-.skill-list {
-	margin-top: 10px;
-}
-.feat-list {
-	margin-top: 10px;
-}
-.stat-list {
-	margin-top: 10px;
-	.info {
-		width: 16px;
+nav {
+	@include flex-center;
+	ul {
+		display: flex;
+		flex-direction: row;
+		li {
+			padding: 15px;
+		}
 	}
-	.info:hover + .hide {
-		display: block;
-		color: red;
+}
+//login.php
+.form-field {
+	display: flex;
+	align-content: center;
+	align-items: start;
+	justify-content: space-evenly;
+	form:first-child {
+		width: 20%;
+		display: flex;
+		flex-direction: column;
+		clear: both;
+		.field {
+			display: flex;
+			margin: 10px 0px;
+			label {
+				width: 30%;
+			}
+		}
+		.submit {
+			width: 20%;
+		}
 	}
-	.hide {
-		display: none;
+	form:last-child {
+		width: 40%;
+		display: flex;
+		flex-direction: column;
+		clear: both;
+		.field {
+			display: flex;
+			margin: 10px 0px;
+			label {
+				width: 30%;
+			}
+		}
+		.submit {
+			width: 20%;
+		}
+	}
+}
+// end login.php
+
+//dn-dashboard.php
+.character_container {
+	@include flex-center;
+	flex-direction: column;
+
+	ul {
+		width: 20%;
+		align-self: left;
+		li {
+			margin: 20px 0px;
+			a {
+				font-size: 1.2rem;
+			}
+		}
+	}
+}
+// end dn-dashboard.php
+//character-creation.php
+#char-create-from {
+	@include flex-center;
+	flex-direction: column;
+
+	.name-level {
+		@include flex-center;
+		justify-content: space-around;
+		width: 50%;
+	}
+	.char-stats {
+		margin-top: 25px;
+		width: 50%;
+		@include flex-center;
+		flex-direction: column;
+		.stat-block {
+			margin: 20px 0px;
+			display: flex;
+			justify-content: space-between;
+			width: 30%;
+			align-self: baseline;
+			input {
+				width: 30%;
+			}
+		}
+	}
+	.race-class {
+		margin-top: 25px;
+		width: 50%;
+		@include flex-center;
+		flex-direction: column;
+		.char-race {
+			align-self: baseline;
+			display: flex;
+			flex-direction: column;
+			label {
+				margin-bottom: 10px;
+				font-size: 1.3rem;
+			}
+		}
+		.char-class {
+			margin-top: 40px;
+			align-self: baseline;
+			display: flex;
+			flex-direction: column;
+			label {
+				margin-bottom: 10px;
+				font-size: 1.3rem;
+			}
+		}
+	}
+	.char-feats {
+		width: 50%;
+		@include flex-center;
+		flex-direction: column;
+		h2 {
+			align-self: baseline;
+		}
+		.feats {
+			align-self: baseline;
+			div {
+				margin: 10px 0px;
+				img {
+					width: 16px;
+				}
+				img:hover + .hide {
+					display: block;
+					color: red;
+				}
+				.hide {
+					display: none;
+					margin-top: 10px;
+				}
+			}
+		}
+	}
+	.char-skills {
+		width: 50%;
+		@include flex-center;
+		flex-direction: column;
+		h2 {
+			align-self: baseline;
+		}
+		.skills {
+			align-self: baseline;
+			div {
+				margin: 10px 0px;
+				img {
+					width: 16px;
+				}
+				img:hover + .hide {
+					display: block;
+					color: red;
+				}
+				.hide {
+					display: none;
+					margin-top: 10px;
+				}
+			}
+		}
+	}
+	.submit {
+		margin: 50px;
+		width: 250px;
+		height: 50px;
+	}
+}
+
+// end character-creation.php
+// character-review.php
+.review-container {
+	@include flex-center;
+	flex-direction: column;
+	.base-info {
+		width: 50%;
+		@include flex-center;
+		// flex-direction: column;
+		flex-wrap: wrap;
+		h2 {
+			margin-right: 10%;
+			margin-bottom: 2%;
+			align-self: baseline;
+		}
+	}
+	.char-skills {
+		width: 50%;
+		@include flex-center;
+		flex-direction: column;
+		ul {
+			align-self: baseline;
+			h3 {
+				font-size: 1.9rem;
+				margin: 15px 0px;
+			}
+			li {
+				font-size: 1.3rem;
+				margin: 10px 0px;
+				img {
+					width: 16px;
+				}
+				img:hover + .hide {
+					display: block;
+					color: red;
+				}
+				.hide {
+					display: none;
+					margin-top: 10px;
+				}
+			}
+		}
+	}
+
+	.char-feats {
+		width: 50%;
+		@include flex-center;
+		flex-direction: column;
+		ul {
+			align-self: baseline;
+			h3 {
+				font-size: 1.9rem;
+				margin: 15px 0px;
+			}
+			li {
+				margin: 10px 0px;
+				font-size: 1.3rem;
+				img {
+					width: 16px;
+				}
+				img:hover + .hide {
+					display: block;
+					color: red;
+				}
+				.hide {
+					display: none;
+					margin-top: 10px;
+				}
+			}
+		}
+	}
+	.feat-list {
+		margin-top: 10px;
+	}
+	.char-stats {
+		width: 50%;
+		@include flex-center;
+		flex-direction: column;
+		.stats {
+			align-self: baseline;
+			h3 {
+				font-size: 1.9rem;
+				margin: 15px 0px;
+			}
+			.stat-name {
+				font-size: 1.3rem;
+			}
+			.stat-list {
+				font-size: 1.3rem;
+				margin-top: 10px;
+				margin-right: 10px;
+				overflow: hidden;
+				.info {
+					width: 16px;
+				}
+				.info:hover + .hide {
+					display: block;
+					color: red;
+				}
+				.hide {
+					display: none;
+					margin-top: 10px;
+				}
+			}
+		}
 	}
 }

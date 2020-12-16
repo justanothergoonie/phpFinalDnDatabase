@@ -134,6 +134,11 @@ table {
 	border-spacing: 0;
 }
 
+body {
+	display: flex;
+	flex-direction: column;
+}
+
 .stats {
 	display: flex;
 	flex-direction: column;
@@ -144,42 +149,390 @@ table {
 	margin: 1% 0%;
 }
 
-.base-info {
+h1 {
+	font-size: 2rem;
+}
+
+h2 {
+	font-size: 1.5rem;
 	display: flex;
 	flex-direction: column;
 }
 
-.feats {
+nav {
 	display: flex;
+	align-content: center;
+	align-items: center;
+	justify-content: center;
 }
 
-.skills {
+nav ul {
 	display: flex;
+	flex-direction: row;
 }
 
-.skill-list {
-	margin-top: 10px;
+nav ul li {
+	padding: 15px;
 }
 
-.feat-list {
-	margin-top: 10px;
+.form-field {
+	display: flex;
+	align-content: center;
+	align-items: start;
+	justify-content: space-evenly;
 }
 
-.stat-list {
-	margin-top: 10px;
+.form-field form:first-child {
+	width: 20%;
+	display: flex;
+	flex-direction: column;
+	clear: both;
 }
 
-.stat-list .info {
+.form-field form:first-child .field {
+	display: flex;
+	margin: 10px 0px;
+}
+
+.form-field form:first-child .field label {
+	width: 30%;
+}
+
+.form-field form:first-child .submit {
+	width: 20%;
+}
+
+.form-field form:last-child {
+	width: 40%;
+	display: flex;
+	flex-direction: column;
+	clear: both;
+}
+
+.form-field form:last-child .field {
+	display: flex;
+	margin: 10px 0px;
+}
+
+.form-field form:last-child .field label {
+	width: 30%;
+}
+
+.form-field form:last-child .submit {
+	width: 20%;
+}
+
+.character_container {
+	display: flex;
+	align-content: center;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+}
+
+.character_container ul {
+	width: 20%;
+	align-self: left;
+}
+
+.character_container ul li {
+	margin: 20px 0px;
+}
+
+.character_container ul li a {
+	font-size: 1.2rem;
+}
+
+#char-create-from {
+	display: flex;
+	align-content: center;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+}
+
+#char-create-from .name-level {
+	display: flex;
+	align-content: center;
+	align-items: center;
+	justify-content: center;
+	justify-content: space-around;
+	width: 50%;
+}
+
+#char-create-from .char-stats {
+	margin-top: 25px;
+	width: 50%;
+	display: flex;
+	align-content: center;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+}
+
+#char-create-from .char-stats .stat-block {
+	margin: 20px 0px;
+	display: flex;
+	justify-content: space-between;
+	width: 30%;
+	align-self: baseline;
+}
+
+#char-create-from .char-stats .stat-block input {
+	width: 30%;
+}
+
+#char-create-from .race-class {
+	margin-top: 25px;
+	width: 50%;
+	display: flex;
+	align-content: center;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+}
+
+#char-create-from .race-class .char-race {
+	align-self: baseline;
+	display: flex;
+	flex-direction: column;
+}
+
+#char-create-from .race-class .char-race label {
+	margin-bottom: 10px;
+	font-size: 1.3rem;
+}
+
+#char-create-from .race-class .char-class {
+	margin-top: 40px;
+	align-self: baseline;
+	display: flex;
+	flex-direction: column;
+}
+
+#char-create-from .race-class .char-class label {
+	margin-bottom: 10px;
+	font-size: 1.3rem;
+}
+
+#char-create-from .char-feats {
+	width: 50%;
+	display: flex;
+	align-content: center;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+}
+
+#char-create-from .char-feats h2 {
+	align-self: baseline;
+}
+
+#char-create-from .char-feats .feats {
+	align-self: baseline;
+}
+
+#char-create-from .char-feats .feats div {
+	margin: 10px 0px;
+}
+
+#char-create-from .char-feats .feats div img {
 	width: 16px;
 }
 
-.stat-list .info:hover + .hide {
+#char-create-from .char-feats .feats div img:hover + .hide {
 	display: block;
 	color: red;
 }
 
-.stat-list .hide {
+#char-create-from .char-feats .feats div .hide {
 	display: none;
+	margin-top: 10px;
+}
+
+#char-create-from .char-skills {
+	width: 50%;
+	display: flex;
+	align-content: center;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+}
+
+#char-create-from .char-skills h2 {
+	align-self: baseline;
+}
+
+#char-create-from .char-skills .skills {
+	align-self: baseline;
+}
+
+#char-create-from .char-skills .skills div {
+	margin: 10px 0px;
+}
+
+#char-create-from .char-skills .skills div img {
+	width: 16px;
+}
+
+#char-create-from .char-skills .skills div img:hover + .hide {
+	display: block;
+	color: red;
+}
+
+#char-create-from .char-skills .skills div .hide {
+	display: none;
+	margin-top: 10px;
+}
+
+#char-create-from .submit {
+	margin: 50px;
+	width: 250px;
+	height: 50px;
+}
+
+.review-container {
+	display: flex;
+	align-content: center;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+}
+
+.review-container .base-info {
+	width: 50%;
+	display: flex;
+	align-content: center;
+	align-items: center;
+	justify-content: center;
+	flex-wrap: wrap;
+}
+
+.review-container .base-info h2 {
+	margin-right: 10%;
+	margin-bottom: 2%;
+	align-self: baseline;
+}
+
+.review-container .char-skills {
+	width: 50%;
+	display: flex;
+	align-content: center;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+}
+
+.review-container .char-skills ul {
+	align-self: baseline;
+}
+
+.review-container .char-skills ul h3 {
+	font-size: 1.9rem;
+	margin: 15px 0px;
+}
+
+.review-container .char-skills ul li {
+	font-size: 1.3rem;
+	margin: 10px 0px;
+}
+
+.review-container .char-skills ul li img {
+	width: 16px;
+}
+
+.review-container .char-skills ul li img:hover + .hide {
+	display: block;
+	color: red;
+}
+
+.review-container .char-skills ul li .hide {
+	display: none;
+	margin-top: 10px;
+}
+
+.review-container .char-feats {
+	width: 50%;
+	display: flex;
+	align-content: center;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+}
+
+.review-container .char-feats ul {
+	align-self: baseline;
+}
+
+.review-container .char-feats ul h3 {
+	font-size: 1.9rem;
+	margin: 15px 0px;
+}
+
+.review-container .char-feats ul li {
+	margin: 10px 0px;
+	font-size: 1.3rem;
+}
+
+.review-container .char-feats ul li img {
+	width: 16px;
+}
+
+.review-container .char-feats ul li img:hover + .hide {
+	display: block;
+	color: red;
+}
+
+.review-container .char-feats ul li .hide {
+	display: none;
+	margin-top: 10px;
+}
+
+.review-container .feat-list {
+	margin-top: 10px;
+}
+
+.review-container .char-stats {
+	width: 50%;
+	display: flex;
+	align-content: center;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+}
+
+.review-container .char-stats .stats {
+	align-self: baseline;
+}
+
+.review-container .char-stats .stats h3 {
+	font-size: 1.9rem;
+	margin: 15px 0px;
+}
+
+.review-container .char-stats .stats .stat-name {
+	font-size: 1.3rem;
+}
+
+.review-container .char-stats .stats .stat-list {
+	font-size: 1.3rem;
+	margin-top: 10px;
+	margin-right: 10px;
+	overflow: hidden;
+}
+
+.review-container .char-stats .stats .stat-list .info {
+	width: 16px;
+}
+
+.review-container .char-stats .stats .stat-list .info:hover + .hide {
+	display: block;
+	color: red;
+}
+
+.review-container .char-stats .stats .stat-list .hide {
+	display: none;
+	margin-top: 10px;
 }
 
 /*# sourceMappingURL=main.css.map */
